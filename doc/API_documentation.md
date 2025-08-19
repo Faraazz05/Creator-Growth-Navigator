@@ -9,7 +9,6 @@ from src.models.regression import LinearGrowthModel
 from src.data.loader import DataLoader
 from src.evaluation.kpi import ModelEvaluator
 
-text
 
 ## Core Classes
 
@@ -18,16 +17,15 @@ Load and preprocess creator data for modeling.
 
 loader = DataLoader()
 
-Load raw data
+#### **Load raw data**
 raw_data = loader.load_raw_data('data/raw/creator_daily_metrics.csv')
 
-Load processed features
+#### **Load processed features**
 features = loader.load_processed_data('data/processed/model_ready_features.csv')
 
-Validate data quality
+#### **Validate data quality**
 validation_report = loader.validate_data(raw_data)
 
-text
 
 **Methods:**
 - `load_raw_data(filepath)`: Load raw creator metrics
@@ -40,19 +38,18 @@ Core linear regression model for follower growth prediction.
 
 model = LinearGrowthModel()
 
-Train model
+#### **Train model**
 model.fit(X_train, y_train)
 
-Make predictions
+#### **Make predictions**
 predictions = model.predict(X_test)
 
-Get confidence intervals
+#### **Get confidence intervals**
 predictions, intervals = model.predict_with_confidence(X_test, confidence=0.95)
 
-Feature importance
+#### **Feature importance**
 importance = model.get_feature_importance()
 
-text
 
 **Methods:**
 - `fit(X, y)`: Train the linear regression model
@@ -75,7 +72,7 @@ cv_scores = evaluator.time_series_cross_validation(model, X, y)
 Residual analysis
 residual_analysis = evaluator.analyze_residuals(y_true, y_pred)
 
-text
+
 
 **Methods:**
 - `calculate_metrics(y_true, y_pred)`: RMSE, MAE, R², MAPE
@@ -97,7 +94,7 @@ required_columns = [
 'reach' # Content reach
 ]
 
-text
+
 
 ### Prediction Output
 Prediction response structure
@@ -116,7 +113,7 @@ Prediction response structure
 ]
 }
 
-text
+
 
 ## Batch Processing
 
@@ -134,7 +131,7 @@ scenarios = [
 
 results = predictor.predict_scenarios(scenarios)
 
-text
+
 
 ### Automated Retraining
 from src.models.regression import ModelTrainer
@@ -148,7 +145,7 @@ validation_split=0.2,
 save_model=True
 )
 
-text
+
 
 ## Configuration
 
@@ -163,7 +160,6 @@ config = {
 'regularization': None
 }
 
-text
 
 ### Data Processing Options
 Processing configuration
@@ -174,7 +170,7 @@ processing_config = {
 'feature_scaling': 'standard'
 }
 
-text
+
 
 ## Error Handling
 
@@ -193,7 +189,7 @@ print("Model must be trained before making predictions")
 except DataValidationError as e:
 print(f"Data validation failed: {e}")
 
-text
+
 
 ## Rate Limits & Performance
 
@@ -219,7 +215,7 @@ return LinearGrowthModel.load('models/latest_model.pkl')
 model = load_model()
 prediction = model.predict(user_input)
 
-text
+
 
 ### API Endpoint Integration
 Flask/FastAPI endpoint
@@ -228,7 +224,7 @@ def predict_growth(request: PredictionRequest):
 prediction = model.predict(request.features)
 return PredictionResponse(prediction=prediction)
 
-text
+
 
 ## Versioning
 - **API Version**: 1.0.0

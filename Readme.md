@@ -1,31 +1,35 @@
 # Creator Growth Navigator
 Predict and optimize Instagram follower growth with actionable data science.
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The Creator Growth Navigator is a data-driven ecosystem designed for creators and growth strategists to model, predict, and optimize Instagram follower growth. Powered by interpretable linear regression and advanced feature engineering, it blends scenario planning, diagnostics, and decision-support into a robust Streamlit application.
 
 Whether you're an individual creator, agency, or data scientist, this tool equips you to answer:
 How does my posting cadence, content mix, and engagement strategy drive follower growth—and what changes will yield best ROI?
 
-Key Features
-Single-Lever Regression: Models weekly follower growth using posting frequency as the main lever.
+-------------
 
-Advanced Feature Engineering: Contextual enrichment via content mix, engagement weighting, posting timing, and consistency metrics.
+## Key Features
+- Single-Lever Regression: Models weekly follower growth using posting frequency as the main lever.
 
-Time-Aware Validation: Cross-validation that respects temporal structure and provides predictive confidence intervals.
+- Advanced Feature Engineering: Contextual enrichment via content mix, engagement weighting, posting timing, and consistency metrics.
 
-Counterfactual Decision-Support: Interactive “what-if” analysis and ROI calculator for scenario planning.
+- Time-Aware Validation: Cross-validation that respects temporal structure and provides predictive confidence intervals.
 
-Robust Diagnostics: Saturation warnings, drift detection, outlier identification, and detailed residual analysis.
+- Counterfactual Decision-Support: Interactive “what-if” analysis and ROI calculator for scenario planning.
 
-Professional Streamlit UI: Modular dashboards for prediction, health monitoring, growth history, and strategic insights.
+- Robust Diagnostics: Saturation warnings, drift detection, outlier identification, and detailed residual analysis.
 
-Synthetic Data Pipeline: Realistic, configurable creator datasets spanning 2+ years; compatible with raw and benchmark data.
+- Professional Streamlit UI: Modular dashboards for prediction, health monitoring, growth history, and strategic insights.
 
-Cloud-Ready Deployment: Containerized with Docker for seamless production launches.
+- Synthetic Data Pipeline: Realistic, configurable creator datasets spanning 2+ years; compatible with raw and benchmark data.
 
-Architecture & Folder Structure
+- Cloud-Ready Deployment: Containerized with Docker for seamless production launches.
+
+-----------------
+
+## Architecture & Folder Structure
 ```bash
 creator_growth_navigator/
 ├── data/

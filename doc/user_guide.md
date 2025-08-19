@@ -3,6 +3,8 @@
 ## Overview
 Creator Growth Navigator is a data-driven tool that predicts Instagram follower growth based on posting frequency while providing rich insights into content strategy and engagement patterns.
 
+------------------
+
 ## Getting Started
 
 ### Installation
@@ -11,13 +13,13 @@ git clone https://github.com/your-username/creator-growth-navigator
 cd creator-growth-navigator
 pi
 ```
-text
+----------------
 
 ### Quick Start
 ```bash
 streamlit run streamlit_app/Home.py
 ```
-text
+----------------
 
 ## Using the Application
 
@@ -48,6 +50,8 @@ text
 - **Drift Detection**: Alerts when model needs retraining
 - **Feature Importance**: Understanding which factors drive growth
 
+--------------------
+
 ## Key Features
 
 ### Core Prediction Engine
@@ -66,6 +70,8 @@ text
 - **Saturation Warnings**: Identify diminishing returns
 - **Competitor Benchmarking**: Industry comparison features
 
+---------------------
+
 ## Data Requirements
 
 ### Input Format
@@ -76,6 +82,8 @@ text
 ### Supported File Types
 - CSV files with daily creator metrics
 - JSON exports from social media management tools
+
+-------------------
 
 ## Best Practices
 
@@ -94,6 +102,8 @@ text
 2. **Quality content**: Balance frequency with engagement quality
 3. **Audience understanding**: Tailor strategies to your specific audience
 
+--------------------
+
 ## Troubleshooting
 
 ### Common Issues
@@ -105,6 +115,8 @@ text
 - Check the API documentation for technical details
 - Review model documentation for algorithmic insights
 - Submit issues on GitHub for bug reports
+
+-------------------
 
 ## Limitations
 
@@ -118,6 +130,8 @@ text
 - Viral content effects
 - Seasonal and cultural events
 - Competitor actions
+
+-------------------
 
 ## Updates and Maintenance
 

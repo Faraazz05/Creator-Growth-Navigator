@@ -8,6 +8,8 @@ Predict Instagram follower growth based on posting frequency while maintaining m
 ### Solution Approach
 Simple linear regression with weekly posting frequency as the primary predictor, enriched with contextual features for content strategy insights.
 
+-------------------
+
 ## Model Architecture
 
 ### Core Model: Linear Regression
@@ -20,6 +22,8 @@ text
 - **Weekly aggregation**: Focuses on sustainable posting patterns rather than daily volatility
 - **Single primary lever**: Weekly posting frequency as main predictor for simplicity
 - **Contextual enrichment**: Additional features provide strategy insights without complexity
+
+-----------------
 
 ### Feature Engineering Pipeline
 
@@ -55,10 +59,13 @@ text
    - `minutes_spent`: Total content creation time
    - **Purpose**: Efficiency and sustainability insights
 
+   ----------------------
+
 ## Model Training
 
 ### Data Preparation
-Weekly aggregation from daily metrics
+#### Weekly aggregation from daily metrics
+```bash
 weekly_data = daily_data.groupby(pd.Grouper(freq='W')).agg({
 'posts': 'sum',
 'reels': 'sum',
@@ -66,18 +73,19 @@ weekly_data = daily_data.groupby(pd.Grouper(freq='W')).agg({
 'followers': 'last',
 'engagement_rate': 'mean'
 })
-
-Calculate weekly growth
+```
+#### Calculate weekly growth
+```bash
 weekly_data['weekly_growth'] = weekly_data['followers'].diff()
+```
 
-Create posting frequency feature
+## Create posting frequency feature
 weekly_data['weekly_posting_freq'] = (
 weekly_data['posts'] +
 weekly_data['reels'] +
 weekly_data['stories']
 )
 
-text
 
 ### Training Process
 1. **Time Series Split**: Respect temporal order (80% train, 20% test)
@@ -89,6 +97,8 @@ text
 - **No regularization**: Maintains interpretability
 - **Feature selection**: Manual selection based on domain knowledge
 - **Outlier handling**: 3-sigma threshold for extreme values
+
+-----------------
 
 ## Model Performance
 
@@ -116,6 +126,8 @@ text
 - **RMSE < 200**: Predictions accurate within ±200 followers
 - **Directional Accuracy > 80%**: Reliable growth direction prediction
 
+---------------
+
 ## Model Assumptions
 
 ### Statistical Assumptions
@@ -130,8 +142,11 @@ text
 3. **Consistent audience**: Follower behavior remains stable
 4. **Platform stability**: Instagram algorithm doesn't change dramatically
 
+---------------
+
 ### Assumption Validation
 Linearity check
+```bash 
 plt.scatter(X['weekly_posting_freq'], y)
 
 Homoscedasticity check
@@ -142,8 +157,8 @@ stats.jarque_bera(residuals)
 
 Independence check (Durbin-Watson test)
 statsmodels.stats.diagnostic.durbin_watson(residuals)
-
-text
+```
+------------------
 
 ## Model Limitations
 
@@ -164,9 +179,12 @@ text
 - **Seasonal variations**: Limited seasonal pattern recognition
 - **Content quality**: Posting frequency vs. content quality trade-offs
 
+--------------
+
 ## Model Diagnostics
 
 ### Residual Analysis
+```bash
 Residual plots for assumption checking
 residuals = y_true - y_pred
 
@@ -178,8 +196,8 @@ stats.probplot(residuals, dist="norm", plot=plt)
 
 Residuals vs time (autocorrelation check)
 plt.plot(dates, residuals)
+```
 
-text
 
 ### Outlier Detection
 - **Statistical outliers**: |z-score| > 3
@@ -191,6 +209,8 @@ text
 - **Performance monitoring**: R² and RMSE trends
 - **Drift detection**: Significant performance degradation alerts
 
+--------------
+
 ## Interpretability
 
 ### Coefficient Interpretation
@@ -199,7 +219,6 @@ text
 β₃ (Timing): Effect of optimal posting windows
 β₄ (Consistency): Value of regular posting patterns
 
-text
 
 ### Feature Importance
 1. **Weekly posting frequency**: Primary driver (highest coefficient)
@@ -212,6 +231,8 @@ text
 - **Content strategy**: Optimal mix of posts/reels/stories
 - **Timing optimization**: Value of posting in optimal windows
 - **Consistency value**: Regular posting vs. sporadic bursts
+
+---------------
 
 ## Model Maintenance
 
@@ -232,10 +253,13 @@ text
 - **Residual patterns**: Systematic error detection
 - **Business impact**: Creator growth achievement tracking
 
+------------
+
 ## Technical Implementation
 
 ### Model Storage
 Model serialization
+```bash
 joblib.dump(model, 'models/linear_growth_model.pkl')
 
 Metadata storage
@@ -245,29 +269,36 @@ model_metadata = {
 'features': feature_names,
 'performance': metrics
 }
+```
 
-text
 
 ### Prediction Pipeline
+```bash
 def predict_growth(posting_frequency, content_mix, timing_score):
+```
 # Feature preparation
+```bash
 features = prepare_features(posting_frequency, content_mix, timing_score)
+```
 
-text
 # Model prediction
+```bash
 prediction = model.predict(features)
+```
 
 # Confidence interval
+```bash
 prediction_interval = model.predict_interval(features, alpha=0.05)
-
 return prediction, prediction_interval
-text
+```
 
 ### API Integration
 - **Real-time predictions**: Sub-second response time
 - **Batch processing**: Handle multiple scenarios efficiently
 - **Error handling**: Graceful handling of invalid inputs
 - **Logging**: Comprehensive prediction tracking
+
+---------
 
 ## Future Enhancements
 
